@@ -11,7 +11,7 @@ class JokeFactoryTest extends TestCase
     public function it_returns_a_random_joke()
     {
         $jokes = new JokeFactory([
-            'This is a joke'
+            'This is a joke',
         ]);
 
         $joke = $jokes->getRandomJoke();
@@ -24,13 +24,13 @@ class JokeFactoryTest extends TestCase
     {
         $defaultJokes = [
             'Chuck norris\' tears cure cancer. Too bad he has never cried.',
-            'Chuck norris counted to infinity... twice.'
+            'Chuck norris counted to infinity... twice.',
         ];
 
         $jokes = new JokeFactory();
 
         $joke = $jokes->getRandomJoke();
 
-        $this->assertContains( $joke, $defaultJokes);
+        $this->assertContains($joke, $defaultJokes);
     }
 }
