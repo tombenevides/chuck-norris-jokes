@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tombenevides\ChuckNorrisJokes;
 
 class JokeFactory
@@ -12,7 +11,7 @@ class JokeFactory
 
     public function __construct(array $jokes = null)
     {
-        if($jokes){
+        if ($jokes) {
             $this->jokes = $jokes;
         }
     }
