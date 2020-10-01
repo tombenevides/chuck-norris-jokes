@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 
 class JokeFactory
 {
-
     const API_ENDPOINT = 'http://api.icndb.com/jokes/random';
 
     protected $client;

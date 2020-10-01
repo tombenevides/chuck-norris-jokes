@@ -11,26 +11,25 @@ class ChuckNorrisJokesServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole()) {
             $this->commands([
-                ChuckNorrisJoke::class
+                ChuckNorrisJoke::class,
             ]);
         }
 
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'chuck-norris');
 
         $this->publishes([
-            __DIR__.'/../Resources/views' => resource_path('views/vendor/chuck-norris')
+            __DIR__.'/../Resources/views' => resource_path('views/vendor/chuck-norris'),
         ], 'views');
 
         $this->publishes([
             __DIR__.'/../config/chucknorris.php' => base_path('config/chucknorris.php'),
         ], 'config');
 
-        if(! class_exists('CreateJokesTable'))
-        {
+        if (! class_exists('CreateJokesTable')) {
             $this->publishes([
-                __DIR__.'/../database/migrations/create_jokes_table.php.stub' => database_path('migrations/'.date('Y_m_d_His',time()).'_create_jokes_table.php'),
+                __DIR__.'/../database/migrations/create_jokes_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_jokes_table.php'),
             ], 'migrations');
         }
 
