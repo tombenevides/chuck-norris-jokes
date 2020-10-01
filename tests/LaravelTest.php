@@ -13,15 +13,15 @@ class LaravelTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
-         return [
-             ChuckNorrisJokesServiceProvider::class
-         ];
+        return [
+            ChuckNorrisJokesServiceProvider::class,
+        ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'ChuckNorris' => ChuckNorrisJoke::class
+            'ChuckNorris' => ChuckNorrisJoke::class,
         ];
     }
 
@@ -48,13 +48,12 @@ class LaravelTest extends TestCase
         $this->assertSame('some joke'.PHP_EOL, $output);
     }
 
-    
     public function the_route_can_be_accessed()
     {
         ChuckNorris::shouldReceive('getRandomJoke')
             ->once()
             ->andReturn('some joke');
-        
+
         $this->get('/chuck-norris')
             ->assertViewIs('chuck-norris::joke')
             ->assertViewHas('joke', 'some joke')
